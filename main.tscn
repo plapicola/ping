@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://drs4fftxp7dnu"]
+[gd_scene load_steps=6 format=3 uid="uid://drs4fftxp7dnu"]
+
+[ext_resource type="PackedScene" uid="uid://c1hli25m0a6v1" path="res://paddle.tscn" id="1_1d8i5"]
+[ext_resource type="Script" path="res://main.gd" id="1_5p2r5"]
+[ext_resource type="PackedScene" uid="uid://bdfbiw5rnk160" path="res://ball.tscn" id="2_8nsj7"]
+[ext_resource type="PackedScene" uid="uid://ct5jio6p18vri" path="res://goal.tscn" id="3_vy7yv"]
+[ext_resource type="PackedScene" uid="uid://dym2yvpu5t0n6" path="res://wall.tscn" id="4_djhlc"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_5p2r5")
+
+[node name="PlayerPaddleSpawn" type="Marker2D" parent="."]
+position = Vector2(100, 720)
+
+[node name="PlayerPaddle" parent="." instance=ExtResource("1_1d8i5")]
+position = Vector2(100, 720)
+normal = Vector2(1, 2.08165e-12)
+
+[node name="OpponentPaddleSpawn" type="Marker2D" parent="."]
+position = Vector2(2450, 720)
+
+[node name="OpponentPaddle" parent="." instance=ExtResource("1_1d8i5")]
+position = Vector2(2460, 720)
+normal = Vector2(-1, 2.08165e-12)
+
+[node name="BallSpawn" type="Marker2D" parent="."]
+position = Vector2(1280, 720)
+
+[node name="Ball" parent="." instance=ExtResource("2_8nsj7")]
+position = Vector2(1280, 720)
+
+[node name="PlayerGoal" parent="." instance=ExtResource("3_vy7yv")]
+position = Vector2(2.08165e-12, 720)
+
+[node name="OpponentGoal" parent="." instance=ExtResource("3_vy7yv")]
+
+[node name="TopWall" parent="." instance=ExtResource("4_djhlc")]
+position = Vector2(1280, 2.08165e-12)
+normal = Vector2(2.08165e-12, 1)
+
+[node name="BottomWall" parent="." instance=ExtResource("4_djhlc")]
+position = Vector2(1280, 1440)
+normal = Vector2(2.08165e-12, -1)
